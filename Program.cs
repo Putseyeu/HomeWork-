@@ -10,9 +10,9 @@ namespace HomeWork_
     {
         static void Main(string[] args)
         {
-            string text = "(()(())())";
-            int checkNumber;
-            int nestingDepth = 0;
+            string text = "(()(()))";
+            int checkNumber = 0;
+            int nestingDepth;
             int counterOpen = 0;
             int counterClose = 0;
             int parityDivisor = 2;
@@ -20,27 +20,28 @@ namespace HomeWork_
 
             foreach (var symbol in text)
             {
-                nestingDepth++;
                 if (symbol == '(')
                 {
+                    checkNumber++;
                     counterOpen++;
                 }
                 if (symbol == ')')
                 {
+                    checkNumber--;
                     counterClose++;
                 }
+                if (checkNumber < 0)
+                {
+                    Console.WriteLine($" {text} - Строка не является корректным скобочным выражением");
+                    break;
+                }
             }
-
-            checkNumber = counterOpen - counterClose;           
+         
             if (checkNumber == 0)
             {
                 nestingDepth = (counterOpen + counterClose) / parityDivisor - uncountedParenthesisPair;
                 Console.WriteLine($" {text} - Строка является корректным скобочным выражением  с глубиной вложения  {nestingDepth}");
-            }
-            else
-            {
-                Console.WriteLine($" {text} - Строка не является корректным скобочным выражением");
-            }
+            }            
         }
     }
 }
