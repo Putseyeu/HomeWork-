@@ -10,7 +10,7 @@ namespace HomeWork_
     {
         static void Main(string[] args)
         {
-            string text = "(()(()))";
+            string text = "())(()";
             int checkNumber = 0;
             int nestingDepth;
             int counterOpen = 0;
